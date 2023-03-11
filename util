@@ -1,0 +1,34 @@
+to map the brightness key to any other ket in sxhkd we have to first get the other key name from
+
+xmodmap -pke
+
+
+it has all keynames and then go to .config and shhkd and set the command there
+-------------------------------------
+# My Hotkeys
+
+Print
+        maim --select | tee ~/pix/ss/$(date +%s).jpg | xclip -sel c -t
+image/jpg
+
+super + Print
+        maim | tee ~/pix/ss/$(date +%s).jpg | xclip -sel c -t image/jpg
+
+XF86Audio{RaiseVolume,LowerVolume,Mute}
+        pamixer -{i,d,t} 2; kill -34 $(cat ~/.cache/pidofbar)
+
+#XF86MonBrightness{Up,Down}
+
+XF86AudioPlay
+        brightnessctl s 2%-
+XF86AudioStop
+        brightnessctl s +2%
+
+super + Escape
+        system_action
+
+--------------------------------------
+
+
+
+here i showed it to map the brightness key yo function play and stop key
